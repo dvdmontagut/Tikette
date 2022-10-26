@@ -1,0 +1,84 @@
+{%  extends './head.html' %}
+
+{%  block title %}Tikette{% endblock %}
+{%  block body %}
+    <div class="p-5 text-center bg-image" style="background-image: url({{ url_for('static', filename='images/fiesta.webp') }});height: 250px;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3">Bienvenido a Tikette</h1>
+              <h4 class="mb-3">Encuentre el concierto que desea y cómo llegar</h4>
+              <a class="btn btn-outline-light btn-lg" href="{{url_for('search')}}" role="button">Comenzar</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Main layout-->
+  <main class="mt-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section>
+        <div class="row">
+          <div class="col-md-5 gx-5 mb-4">
+            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+              <img src="https://media.istockphoto.com/vectors/air-plane-flight-route-with-start-point-and-dash-line-trace-vector-id1147079642?k=20&m=1147079642&s=170667a&w=0&h=vEMiKNbKDZG5BDxjcb_f7alaKPNlwt4bUvQgWb593NI=" class="img-fluid" />
+              <a href="#">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 gx-5 mb-4">
+            <h4><strong>¿Cómo funciona?</strong></h4>
+            <p class="text-muted">
+              Gracias a nuestra aplicación podrás encontrar los conciertos de tus artistas favoritos y encontrar la mejor forma de acudir a ellos
+            </p>
+            <p><strong>Primeros pasos</strong></p>
+            <p class="text-muted">
+              Haz click en comenzar y sigue los pasos para disfrutar de nuestro servicio
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+
+        <hr class="my-5" />
+
+    <footer class="bg-light text-center text-lg-start">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">¿Quiénes somos?</h5>
+
+            <p>
+              Somos un grupo de estudiantes de la Universidad de Salamanca que están estudiando SOA
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">A que aspiramos</h5>
+
+            <p>
+              Queremos una buena nota
+            </p>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://localhost:5000/">Tikette.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+{% endblock %}

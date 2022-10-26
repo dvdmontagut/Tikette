@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/Logo.png') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+</head>
+<body class="bg-light">
+
+    <!--NAV BAR-->
+    <nav class="navbar bg-black">
+      <div class="container-fluid align-middle ">
+        <a class="navbar-brand mx-2 fs-3 text-white" href="{{url_for('home')}}">
+          <img src="{{ url_for('static', filename='images/LogoFull.png') }}" alt="Logo" width="45" height="45" class="d-inline-block align-text-top">
+          Tikette
+        </a>
+      </div>
+    </nav>
+
+    <!--BODY BLOCK-->
+    {% block body %}
+    {%  endblock %}
+</body>
+</html>
