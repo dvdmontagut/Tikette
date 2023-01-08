@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 import json
+import folium
 
 app = Flask(__name__)
 
@@ -8,6 +9,32 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template('index.html')
+
+@app.route("/base-map")
+def base():
+    map = folium.Map(
+        location=[45.52336, -122.6750]
+    )
+    return map._repr_html_()
+
+@app.route("/open-street-map")
+def open_street_map():
+    map = folium.Map(
+        location=[45.52336, -122.6750],
+        tiles="Stamen Toner",
+        zoom_start=13
+    )
+
+    folium.Marker(
+        location=[45.52336, -122.6750],
+        popup="<i>Marker</i>",
+        tooltip="Click me!"
+    ).add_to(map)
+    map.save('templates/maptest.html')
+    return render_template('test.html')
+
+
+
 
 
 @app.route("/search", methods=['POST', 'GET'])
@@ -20,7 +47,7 @@ def search():
     if tam == 1:
         if "artist" not in dic:
             return render_template('NameSearch.html')
-
+ 
         argumentos = {'classificationName': 'music', 'keyword': dic['artist'],
                       'apikey': 'HNYtWPE0DGcjUFwmi0FBPTpbrZ3p7znK'}
         url = f"https://app.ticketmaster.com/discovery/v2/events.json"
