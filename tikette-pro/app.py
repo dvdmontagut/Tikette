@@ -10,33 +10,6 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route("/base-map")
-def base():
-    map = folium.Map(
-        location=[45.52336, -122.6750]
-    )
-    return map._repr_html_()
-
-@app.route("/open-street-map")
-def open_street_map():
-    map = folium.Map(
-        location=[45.52336, -122.6750],
-        tiles="Stamen Toner",
-        zoom_start=13
-    )
-
-    folium.Marker(
-        location=[45.52336, -122.6750],
-        popup="<i>Marker</i>",
-        tooltip="Click me!"
-    ).add_to(map)
-    map.save('templates/maptest.html')
-    return render_template('test.html')
-
-
-
-
-
 @app.route("/search", methods=['POST', 'GET'])
 def search():
     if request.method == 'GET':
@@ -74,8 +47,50 @@ def search():
             latitudes[i] = response['_embedded']['events'][i]['_embedded']['venues'][0]['location']['latitude']
             longitudes[i] = response['_embedded']['events'][i]['_embedded']['venues'][0]['location']['longitude']
             links[i] = response['_embedded']['events'][i]['url']
+       
+        
+
+        icons = {}
+        iconTemp = ""
+        weatherTexts = {}
+        maxTemps = {}
+        minTemps = {}
+        
+        for i in range(cuantos):
+            r = requests.get("https://api.tutiempo.net/json/?lan=es&apid=asEqXzXXzaqtXSf&ll=" + latitudes[i]+","+longitudes[i])
+            response = json.loads(r.text)
+            if "day1" in response:
+                iconTemp = response['day1']['icon']
+                icons[i] = "https://v5i.tutiempo.net/wi/01/" + "80" + "/" + str(iconTemp) + ".png"
+                weatherTexts[i] = response['day1']['text']
+                maxTemps[i] = str(response['day1']['temperature_max']) + "ºC"
+                minTemps[i] = str(response['day1']['temperature_min']) + "ºC"
+            else:
+                icons[i] = "No data"
+                weatherTexts[i] = "No data"
+                maxTemps[i] = "-ºC"
+                minTemps[i] = "-ºC"
+        
+        
+        map = folium.Map(
+            location=[latitudes[0], longitudes[0]],
+            zoom_start=5
+        )
+        for i in range(cuantos):
+            popup = folium.Popup("<i>" + "Fecha: " + fechas[i] + "<br>" + "Hora: " + horas[i] + "</i>", max_width=100,min_width=100)
+            folium.Marker(
+                location=[latitudes[i], longitudes[i]],
+                popup= popup,
+                tooltip="" + nombres[i] + "  (" + str(i+1) + "/" + str(cuantos) +")"
+            ).add_to(map)
+        map.save('templates/maptest.html')
+
         return render_template('NameSearch.html', cuantos=range(cuantos), nombres=nombres, fotos=fotos, fechas=fechas,
-                               horas=horas, links=links,latitudes=latitudes, longitudes=longitudes)
+                               horas=horas, links=links,latitudes=latitudes, longitudes=longitudes, jsTotal=json.dumps(cuantos),
+                               icons=icons, weatherTexts=weatherTexts, maxTemps=maxTemps, minTemps=minTemps,
+                               jsNombres=json.dumps(nombres), jsFotos=json.dumps(fotos), jsFechas=json.dumps(fechas), jsHoras=json.dumps(horas),
+                               jsLinks=json.dumps(links), jsLatitudes=json.dumps(latitudes), jsLongitudes=json.dumps(longitudes), total=cuantos,
+                               jsIcons=json.dumps(icons), jsWeatherTexts=json.dumps(weatherTexts), jsMaxTemps=json.dumps(maxTemps), jsMinTemps=json.dumps(minTemps))       
     else:
         return render_template('NameSearch.html')
 

@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_58a06edbc54998e0cd0a157e1fde255a {
+                #map_ab186ad0a3043da9ff74f723f2db2b5f {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,18 +39,18 @@
 <body>
     
     
-            <div class="folium-map" id="map_58a06edbc54998e0cd0a157e1fde255a" ></div>
+            <div class="folium-map" id="map_ab186ad0a3043da9ff74f723f2db2b5f" ></div>
         
 </body>
 <script>
     
     
-            var map_58a06edbc54998e0cd0a157e1fde255a = L.map(
-                "map_58a06edbc54998e0cd0a157e1fde255a",
+            var map_ab186ad0a3043da9ff74f723f2db2b5f = L.map(
+                "map_ab186ad0a3043da9ff74f723f2db2b5f",
                 {
-                    center: [45.52336, -122.675],
+                    center: [40.21584, -74.00979],
                     crs: L.CRS.EPSG3857,
-                    zoom: 13,
+                    zoom: 5,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -60,36 +60,355 @@
 
         
     
-            var tile_layer_324ed1ea89938c1e205924e82bcfa5cc = L.tileLayer(
-                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
-                {"attribution": "Map tiles by \u003ca target=\"_blank\" href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_58a06edbc54998e0cd0a157e1fde255a);
+            var tile_layer_704e37156bd9997580997f3f34b0e964 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
         
     
-            var marker_972cc1bbaf9e127a5a13c002c9d4a4f7 = L.marker(
-                [45.52336, -122.675],
+            var marker_f1c28628b389cb85c5304ec7efb6dd86 = L.marker(
+                [40.21584, -74.00979],
                 {}
-            ).addTo(map_58a06edbc54998e0cd0a157e1fde255a);
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
         
     
-        var popup_da20af8df15f985f873d868f1cc4b0c4 = L.popup({"maxWidth": "100%"});
+        var popup_f414084d9584ddb7b9dd65a6118df83d = L.popup({"maxWidth": 100, "minWidth": 100});
 
         
             
-                var html_77d4fde6afdbd92a16462720a4b7dfc5 = $(`<div id="html_77d4fde6afdbd92a16462720a4b7dfc5" style="width: 100.0%; height: 100.0%;"><i>Marker</i></div>`)[0];
-                popup_da20af8df15f985f873d868f1cc4b0c4.setContent(html_77d4fde6afdbd92a16462720a4b7dfc5);
+                var html_bc79b7f03bfd3b11414edbb0a507de4a = $(`<div id="html_bc79b7f03bfd3b11414edbb0a507de4a" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-02-03<br>Hora: 21:00:00</i></div>`)[0];
+                popup_f414084d9584ddb7b9dd65a6118df83d.setContent(html_bc79b7f03bfd3b11414edbb0a507de4a);
             
         
 
-        marker_972cc1bbaf9e127a5a13c002c9d4a4f7.bindPopup(popup_da20af8df15f985f873d868f1cc4b0c4)
+        marker_f1c28628b389cb85c5304ec7efb6dd86.bindPopup(popup_f414084d9584ddb7b9dd65a6118df83d)
         ;
 
         
     
     
-            marker_972cc1bbaf9e127a5a13c002c9d4a4f7.bindTooltip(
+            marker_f1c28628b389cb85c5304ec7efb6dd86.bindTooltip(
                 `<div>
-                     Click me!
+                     Bad Bunny Night  (1/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c4b796165a5f7f9e4fc947c50ef4afa = L.marker(
+                [34.0473, -118.24799],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_de9424c80006e8d4135268f45c792957 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_01ec174aabf0f3150e9684e0d0a57358 = $(`<div id="html_01ec174aabf0f3150e9684e0d0a57358" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-13<br>Hora: 22:00:00</i></div>`)[0];
+                popup_de9424c80006e8d4135268f45c792957.setContent(html_01ec174aabf0f3150e9684e0d0a57358);
+            
+        
+
+        marker_5c4b796165a5f7f9e4fc947c50ef4afa.bindPopup(popup_de9424c80006e8d4135268f45c792957)
+        ;
+
+        
+    
+    
+            marker_5c4b796165a5f7f9e4fc947c50ef4afa.bindTooltip(
+                `<div>
+                     Bad Bunny Night (18+)  (2/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aab8238471e3dffcd82f4d35bc71a38d = L.marker(
+                [32.719404, -117.167835],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_459bbb63f931fc8864ce31a0d11a345d = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_a3b2d69b781fde89454f447662cb70f5 = $(`<div id="html_a3b2d69b781fde89454f447662cb70f5" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-20<br>Hora: 21:00:00</i></div>`)[0];
+                popup_459bbb63f931fc8864ce31a0d11a345d.setContent(html_a3b2d69b781fde89454f447662cb70f5);
+            
+        
+
+        marker_aab8238471e3dffcd82f4d35bc71a38d.bindPopup(popup_459bbb63f931fc8864ce31a0d11a345d)
+        ;
+
+        
+    
+    
+            marker_aab8238471e3dffcd82f4d35bc71a38d.bindTooltip(
+                `<div>
+                     Club 90s Presents Bad Bunny Night  (3/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5d469cf8c3dd274c5b3a72dc54c371b = L.marker(
+                [43.074566, -89.380978],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_0e352d8107666d5afaa07da4b3d8e2c8 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_b61e89f022c5a4fa607f21a993e68b1c = $(`<div id="html_b61e89f022c5a4fa607f21a993e68b1c" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-27<br>Hora: 21:00:00</i></div>`)[0];
+                popup_0e352d8107666d5afaa07da4b3d8e2c8.setContent(html_b61e89f022c5a4fa607f21a993e68b1c);
+            
+        
+
+        marker_a5d469cf8c3dd274c5b3a72dc54c371b.bindPopup(popup_0e352d8107666d5afaa07da4b3d8e2c8)
+        ;
+
+        
+    
+    
+            marker_a5d469cf8c3dd274c5b3a72dc54c371b.bindTooltip(
+                `<div>
+                     Noche de Verano Sin Ti: Celebración de Bad Bunny!  (4/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_60d659e8e47b2a3e16cb52b410643cc5 = L.marker(
+                [38.952184, -92.327842],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_7dce8369b71822ef148011563986ed34 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_03e4f7be19af0df9cf07f3a85b49543e = $(`<div id="html_03e4f7be19af0df9cf07f3a85b49543e" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-28<br>Hora: 21:00:00</i></div>`)[0];
+                popup_7dce8369b71822ef148011563986ed34.setContent(html_03e4f7be19af0df9cf07f3a85b49543e);
+            
+        
+
+        marker_60d659e8e47b2a3e16cb52b410643cc5.bindPopup(popup_7dce8369b71822ef148011563986ed34)
+        ;
+
+        
+    
+    
+            marker_60d659e8e47b2a3e16cb52b410643cc5.bindTooltip(
+                `<div>
+                     Noche de Verano Sin Ti: Celebración de Bad Bunny!  (5/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_840f37405b9d2208a186784349aebf7d = L.marker(
+                [36.8493416, -76.0194075],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_28a18a4719237b2463221d38a3a7974a = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_8c395c2259ffda6eab29ac1a86b4b5d0 = $(`<div id="html_8c395c2259ffda6eab29ac1a86b4b5d0" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-03-10<br>Hora: 23:00:00</i></div>`)[0];
+                popup_28a18a4719237b2463221d38a3a7974a.setContent(html_8c395c2259ffda6eab29ac1a86b4b5d0);
+            
+        
+
+        marker_840f37405b9d2208a186784349aebf7d.bindPopup(popup_28a18a4719237b2463221d38a3a7974a)
+        ;
+
+        
+    
+    
+            marker_840f37405b9d2208a186784349aebf7d.bindTooltip(
+                `<div>
+                     Noche de Verano Sin Ti - A Bad Bunny Birthday Bash  (6/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28407138dab5602be2d8952bcc4086d5 = L.marker(
+                [42.36422, -71.10133],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_8545e38f16f651dfa7a219d3cf6aa9c7 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_058dda2c645728e64eaea993939a44fa = $(`<div id="html_058dda2c645728e64eaea993939a44fa" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-21<br>Hora: 21:00:00</i></div>`)[0];
+                popup_8545e38f16f651dfa7a219d3cf6aa9c7.setContent(html_058dda2c645728e64eaea993939a44fa);
+            
+        
+
+        marker_28407138dab5602be2d8952bcc4086d5.bindPopup(popup_8545e38f16f651dfa7a219d3cf6aa9c7)
+        ;
+
+        
+    
+    
+            marker_28407138dab5602be2d8952bcc4086d5.bindTooltip(
+                `<div>
+                     Noche De Verano Sin Ti (Bad Bunny Night)  (7/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3aa70daf1054aeec4f52a75cad56db9b = L.marker(
+                [41.910305, -87.677985],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_f07b0d2e8f72441c4b3f11cff29f246a = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_7774c0e8d1cea91d8d16818fe8fa6a5a = $(`<div id="html_7774c0e8d1cea91d8d16818fe8fa6a5a" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-14<br>Hora: 22:00:00</i></div>`)[0];
+                popup_f07b0d2e8f72441c4b3f11cff29f246a.setContent(html_7774c0e8d1cea91d8d16818fe8fa6a5a);
+            
+        
+
+        marker_3aa70daf1054aeec4f52a75cad56db9b.bindPopup(popup_f07b0d2e8f72441c4b3f11cff29f246a)
+        ;
+
+        
+    
+    
+            marker_3aa70daf1054aeec4f52a75cad56db9b.bindTooltip(
+                `<div>
+                     NOCHE DE VERANO SIN TI: BAD BUNNY NIGHT  (8/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_812f271215c64b3426c67c0c1865b0ac = L.marker(
+                [33.99647, -118.45786],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_d0a235a0227d2c78545ebe47813389e3 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_19a4098290ef78e0c1a3bab892ec0f2f = $(`<div id="html_19a4098290ef78e0c1a3bab892ec0f2f" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-20<br>Hora: 23:00:00</i></div>`)[0];
+                popup_d0a235a0227d2c78545ebe47813389e3.setContent(html_19a4098290ef78e0c1a3bab892ec0f2f);
+            
+        
+
+        marker_812f271215c64b3426c67c0c1865b0ac.bindPopup(popup_d0a235a0227d2c78545ebe47813389e3)
+        ;
+
+        
+    
+    
+            marker_812f271215c64b3426c67c0c1865b0ac.bindTooltip(
+                `<div>
+                     Bad Bunny x Rauw Alejandro Los Reyes del Reggaeton  (9/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_17d5b4de5628bf6c3abddc7936be8aec = L.marker(
+                [36.175636, -86.755652],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_845ee5e99a8772c48c5b91c5faa540e1 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_028fbee4e991660c0be1039c0b20533e = $(`<div id="html_028fbee4e991660c0be1039c0b20533e" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-03-04<br>Hora: 21:00:00</i></div>`)[0];
+                popup_845ee5e99a8772c48c5b91c5faa540e1.setContent(html_028fbee4e991660c0be1039c0b20533e);
+            
+        
+
+        marker_17d5b4de5628bf6c3abddc7936be8aec.bindPopup(popup_845ee5e99a8772c48c5b91c5faa540e1)
+        ;
+
+        
+    
+    
+            marker_17d5b4de5628bf6c3abddc7936be8aec.bindTooltip(
+                `<div>
+                     ☀️BAD BUNNY X RAUW ALEJANDRO🪐 Dance Party  (10/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c1cbff361d0128718d2127d804536fff = L.marker(
+                [33.451777, -112.076837],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_0df48d75e5bad55c0b241e190a5e80e4 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_0c317e9b88146db85f8cce16ba5cce3b = $(`<div id="html_0c317e9b88146db85f8cce16ba5cce3b" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-13<br>Hora: 22:00:00</i></div>`)[0];
+                popup_0df48d75e5bad55c0b241e190a5e80e4.setContent(html_0c317e9b88146db85f8cce16ba5cce3b);
+            
+        
+
+        marker_c1cbff361d0128718d2127d804536fff.bindPopup(popup_0df48d75e5bad55c0b241e190a5e80e4)
+        ;
+
+        
+    
+    
+            marker_c1cbff361d0128718d2127d804536fff.bindTooltip(
+                `<div>
+                     BAD BUNNY NIGHT W/ DJ AJA CRUZ // REGGAETON / HIP HOP / URBANO  (11/12)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8aeaa409e0c4cb89e947b0332af499fd = L.marker(
+                [39.985866, -83.005629],
+                {}
+            ).addTo(map_ab186ad0a3043da9ff74f723f2db2b5f);
+        
+    
+        var popup_f007ba37a2069946823a0cef6965b632 = L.popup({"maxWidth": 100, "minWidth": 100});
+
+        
+            
+                var html_982e35301aaa8815767e7548ddb4c35e = $(`<div id="html_982e35301aaa8815767e7548ddb4c35e" style="width: 100.0%; height: 100.0%;"><i>Fecha: 2023-01-14<br>Hora: 21:00:00</i></div>`)[0];
+                popup_f007ba37a2069946823a0cef6965b632.setContent(html_982e35301aaa8815767e7548ddb4c35e);
+            
+        
+
+        marker_8aeaa409e0c4cb89e947b0332af499fd.bindPopup(popup_f007ba37a2069946823a0cef6965b632)
+        ;
+
+        
+    
+    
+            marker_8aeaa409e0c4cb89e947b0332af499fd.bindTooltip(
+                `<div>
+                     Noche de Verano Sin Ti (Bad Bunny Night) - A DANCE PARTY!  (12/12)
                  </div>`,
                 {"sticky": true}
             );

@@ -20,7 +20,7 @@
             <div class="col-3">
                 <form class="row g-3 align-items-center" action="{{url_for('search')}}" method="post">
                     <div class="col-12">
-                        <label for="artist" class="form-label fw-bold">Palabra Clave</label>
+                        <label for="artist" class="form-label fw-bold"></label>
                         <input type="text" class="form-control" id="artist" name="artist" required>
                     </div>
                     <div class="col-12">
@@ -39,21 +39,131 @@
                 </div>
             </div>
         {% endif %}
-        <div class="row row-cols-1 row-cols-lg-3 my-5">
-            {% for i in cuantos %}
-                <div class="col">
-                    <div class="card my-1">
-                        <img class="card-img-top" style="width: 100%;height: 300px;object-fit: cover;" src="{{ fotos[i] }}" alt="Foto evento">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ nombres[i] }}</h5>
-                            <p class="card-text">Fecha: {{ fechas[i] }}<br>Hora: {{ horas[i] }}<br>Lat: {{ latitudes[i] }}<br>Long: {{ longitudes[i] }}</p>
-                            <a href="{{ links[i] }}" class="btn btn-link">Venta de entradas</a>
-                            <br><br>
-                            <a href="#" class="btn btn-primary">Mirar vuelos</a>
+        <div class="row row-cols-1 my-5">
+            <section>
+                {% if cuantos is defined %}
+                <div class="row">
+                    <div class="col-7" style="height: 600px;">
+                        {% include 'maptest.html' %}
+                        <div class="text-center">
+                            <label id="lmao" onclick="changeText()"></label>
                         </div>
                     </div>
+                    <div class="col-5" style="margin-top: 20px;">
+                            <div class="card my-1" id="cardTest">
+                                <div class="card-index">
+                                    <div class="row">
+                                        <div class="col-3 text-right" >
+                                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                            <button class="btn shadow-none" onclick="getLeft()">
+                                                <i class="fa fa-chevron-left" style="color: gray;"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-6" style="margin: 0px; padding: 0px;">
+                                            <button id="countButton" type="button" class="btn btn-info" style="width: 100%;">1/{{total}}</button>
+                                        </div>
+                                        <div class="col-3 text-left">
+                                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                            <button class="btn shadow-none" onclick="getRight()">
+                                                <i class="fa fa-chevron-right" style="color: gray;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <img id="eventPhoto" class="card-img-top" style="width: 100%;height: 300px;object-fit: cover;" src="{{ fotos[0] }}" alt="Foto evento">
+                                <div class="card-body">
+                                    <h3 id="eventName" class="card-title">{{ nombres[0] }}</h3>
+                                    <div class="row">
+                                        <div class="col-4 text-right">
+                                            <img id="weatherIcon" src="{{icons[0]}}">
+                                        </div>
+                                        <div class="col-8 text-left">
+                                            <p id="weatherText" class="card-text">{{weatherTexts[0]}}</p>
+                                            <p id="temps" class="card-text">Max: {{ maxTemps[0] }}<br>Min: {{ minTemps[0] }}</p>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <p id="eventTimeInfo" class="card-text">Fecha: {{ fechas[0] }}<br>Hora: {{ horas[0] }}</p>
+                                    <a id="eventTickets" href="{{ links[0] }}" class="btn btn-link">Venta de entradas</a>
+                                    <br><br>
+                                    <a href="#" class="btn btn-primary">Mirar vuelos</a>
+                                </div>
+                            </div>
+                    </div>
                 </div>
-            {% endfor %}
+                {% endif %}
+            </section>
         </div>
     </div>
+{%  endblock %}
+
+{% block javascript %}
+    <script>
+        var index = 0;
+        let jsNombres, jsFotos, jsFechas, jsHoras, jsLinks, jsLatitudes, jsLongitudes, jsTotal;
+        let jsIcons, jsWeatherTexts, jsMaxTemps, jsMinTemps;
+        function cargarDatos(){
+            jsNombres = JSON.parse('{{ jsNombres | safe }}');
+            jsFotos = JSON.parse('{{ jsFotos | safe }}');
+            jsFechas = JSON.parse('{{ jsFechas | safe }}');
+            jsHoras = JSON.parse('{{ jsHoras | safe }}');
+            jsLinks = JSON.parse('{{ jsLinks | safe }}');
+            jsLatitudes = JSON.parse('{{ jsLatitudes | safe }}');
+            jsLongitudes = JSON.parse('{{ jsLongitudes | safe }}');
+            jsTotal = JSON.parse('{{ jsTotal | safe }}');
+
+            jsIcons = JSON.parse('{{ jsIcons | safe }}');
+            jsWeatherTexts = JSON.parse('{{ jsWeatherTexts | safe }}');
+            jsMaxTemps = JSON.parse('{{ jsMaxTemps | safe }}');
+            jsMinTemps = JSON.parse('{{ jsMinTemps | safe }}');
+        }
+
+        function getRight(){
+            index = (index == jsTotal-1) ? 0 : index+1
+            document.getElementById("countButton").textContent =(index+1).toString() + "/" + jsTotal.toString();
+
+            // Change event info
+            document.getElementById("eventPhoto").src= jsFotos[index];
+
+            document.getElementById("eventName").innerHTML=jsNombres[index];
+
+            let timeinfo = "Fecha: "+ jsFechas[index] + "<br>" + "Hora: " + jsHoras[index];
+            document.getElementById("eventTimeInfo").innerHTML= timeinfo;
+
+            document.getElementById("eventTickets").href= jsLinks[index];
+
+            // Change weather info
+            document.getElementById("weatherIcon").src= jsIcons[index];
+            document.getElementById("weatherText").innerHTML=jsWeatherTexts[index];
+            let tempsinfo = "Max: "+ jsMaxTemps[index] + "<br>" + "Min: " + jsMinTemps[index];
+            document.getElementById("temps").innerHTML= tempsinfo;
+
+        }
+        function getLeft(){
+            index = (index == 0) ? 11 : index-1
+            document.getElementById("countButton").textContent =(index+1).toString() + "/" + jsTotal.toString();
+
+            // Change event info
+            document.getElementById("eventPhoto").src= jsFotos[index];
+
+            document.getElementById("eventName").innerHTML=jsNombres[index];
+
+            let timeinfo = "Fecha: "+ jsFechas[index] + "<br>" + "Hora: " + jsHoras[index];
+            document.getElementById("eventTimeInfo").innerHTML= timeinfo;
+
+            document.getElementById("eventTickets").href= jsLinks[index];
+        }
+        function changeText(){
+            document.getElementById("lmao").innerHTML="eiii";
+            
+            
+            document.getElementById("cardTest").hidden = true;
+        }
+        
+    </script>
+
 {%  endblock %}
