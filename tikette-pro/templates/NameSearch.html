@@ -45,11 +45,8 @@
                 <div class="row">
                     <div class="col-7" style="height: 600px;">
                         {% include 'maptest.html' %}
-                        <div class="text-center">
-                            <label id="lmao" onclick="changeText()"></label>
-                        </div>
                     </div>
-                    <div class="col-5" style="margin-top: 20px;">
+                    <div class="col-5">
                             <div class="card my-1" id="cardTest">
                                 <div class="card-index">
                                     <div class="row">
@@ -74,6 +71,7 @@
                                 <img id="eventPhoto" class="card-img-top" style="width: 100%;height: 300px;object-fit: cover;" src="{{ fotos[0] }}" alt="Foto evento">
                                 <div class="card-body">
                                     <h3 id="eventName" class="card-title">{{ nombres[0] }}</h3>
+                                    <h4 id="eventCity" class="card-title">{{ciudades[0]}}</h4>
                                     <div class="row">
                                         <div class="col-4 text-right">
                                             <img id="weatherIcon" src="{{icons[0]}}">
@@ -89,8 +87,6 @@
                                     
                                     <p id="eventTimeInfo" class="card-text">Fecha: {{ fechas[0] }}<br>Hora: {{ horas[0] }}</p>
                                     <a id="eventTickets" href="{{ links[0] }}" class="btn btn-link">Venta de entradas</a>
-                                    <br><br>
-                                    <a href="#" class="btn btn-primary">Mirar vuelos</a>
                                 </div>
                             </div>
                     </div>
@@ -104,11 +100,12 @@
 {% block javascript %}
     <script>
         var index = 0;
-        let jsNombres, jsFotos, jsFechas, jsHoras, jsLinks, jsLatitudes, jsLongitudes, jsTotal;
+        let jsNombres, jsFotos, jsFechas, jsCiudades,jsHoras, jsLinks, jsLatitudes, jsLongitudes, jsTotal;
         let jsIcons, jsWeatherTexts, jsMaxTemps, jsMinTemps;
         function cargarDatos(){
             jsNombres = JSON.parse('{{ jsNombres | safe }}');
             jsFotos = JSON.parse('{{ jsFotos | safe }}');
+            jsCiudades = JSON.parse('{{ jsCiudades | safe }}');
             jsFechas = JSON.parse('{{ jsFechas | safe }}');
             jsHoras = JSON.parse('{{ jsHoras | safe }}');
             jsLinks = JSON.parse('{{ jsLinks | safe }}');
@@ -130,6 +127,7 @@
             document.getElementById("eventPhoto").src= jsFotos[index];
 
             document.getElementById("eventName").innerHTML=jsNombres[index];
+            document.getElementById("eventCity").innerHTML=jsCiudades[index];
 
             let timeinfo = "Fecha: "+ jsFechas[index] + "<br>" + "Hora: " + jsHoras[index];
             document.getElementById("eventTimeInfo").innerHTML= timeinfo;
@@ -151,17 +149,12 @@
             document.getElementById("eventPhoto").src= jsFotos[index];
 
             document.getElementById("eventName").innerHTML=jsNombres[index];
+            document.getElementById("eventCity").innerHTML=jsCiudades[index];
 
             let timeinfo = "Fecha: "+ jsFechas[index] + "<br>" + "Hora: " + jsHoras[index];
             document.getElementById("eventTimeInfo").innerHTML= timeinfo;
 
             document.getElementById("eventTickets").href= jsLinks[index];
-        }
-        function changeText(){
-            document.getElementById("lmao").innerHTML="eiii";
-            
-            
-            document.getElementById("cardTest").hidden = true;
         }
         
     </script>

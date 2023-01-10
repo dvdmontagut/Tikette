@@ -35,10 +35,15 @@ def search():
         links = {}
         latitudes = {}
         longitudes = {}
+        ciudades = {}
+
+        if cuantos == 0:
+            return render_template('NameSearch.html')
         for i in range(cuantos):
             # response['_embedded']['events'][i]
             nombres[i] = response['_embedded']['events'][i]['name']
             fotos[i] = response['_embedded']['events'][i]['images'][0]['url']
+            ciudades[i] = response['_embedded']['events'][i]['_embedded']['venues'][0]['city']['name']
             fechas[i] = response['_embedded']['events'][i]['dates']['start']['localDate']
             if "localTime" in response['_embedded']['events'][i]['dates']['start']:
                 horas[i] = response['_embedded']['events'][i]['dates']['start']['localTime']
@@ -71,29 +76,30 @@ def search():
                 maxTemps[i] = "-ºC"
                 minTemps[i] = "-ºC"
         
-        
+       
         map = folium.Map(
             location=[latitudes[0], longitudes[0]],
             zoom_start=5
         )
+
         for i in range(cuantos):
             popup = folium.Popup("<i>" + "Fecha: " + fechas[i] + "<br>" + "Hora: " + horas[i] + "</i>", max_width=100,min_width=100)
             folium.Marker(
                 location=[latitudes[i], longitudes[i]],
                 popup= popup,
-                tooltip="" + nombres[i] + "  (" + str(i+1) + "/" + str(cuantos) +")"
+                tooltip="" + nombres[i] + "  (" + str(i+1) + "/" + str(cuantos) +")" 
             ).add_to(map)
         map.save('templates/maptest.html')
 
-        return render_template('NameSearch.html', cuantos=range(cuantos), nombres=nombres, fotos=fotos, fechas=fechas,
-                               horas=horas, links=links,latitudes=latitudes, longitudes=longitudes, jsTotal=json.dumps(cuantos),
-                               icons=icons, weatherTexts=weatherTexts, maxTemps=maxTemps, minTemps=minTemps,
+        return render_template('NameSearch.html', cuantos=range(cuantos), nombres=nombres, fotos=fotos, fechas=fechas, ciudades = ciudades, 
+                                horas=horas, links=links, latitudes=latitudes, longitudes=longitudes,
+                                icons=icons, weatherTexts=weatherTexts, maxTemps=maxTemps, minTemps=minTemps, jsCiudades = json.dumps(ciudades),
                                jsNombres=json.dumps(nombres), jsFotos=json.dumps(fotos), jsFechas=json.dumps(fechas), jsHoras=json.dumps(horas),
-                               jsLinks=json.dumps(links), jsLatitudes=json.dumps(latitudes), jsLongitudes=json.dumps(longitudes), total=cuantos,
+                               jsLinks=json.dumps(links), jsLatitudes=json.dumps(latitudes), jsLongitudes=json.dumps(longitudes), total=cuantos, jsTotal=json.dumps(cuantos),
                                jsIcons=json.dumps(icons), jsWeatherTexts=json.dumps(weatherTexts), jsMaxTemps=json.dumps(maxTemps), jsMinTemps=json.dumps(minTemps))       
     else:
         return render_template('NameSearch.html')
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
