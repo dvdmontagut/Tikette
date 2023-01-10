@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
+from random import randint
 import requests
 import json
 import folium
+import os
 
 app = Flask(__name__)
 
@@ -20,6 +22,8 @@ def search():
     if tam == 1:
         if "artist" not in dic:
             return render_template('NameSearch.html')
+
+        
  
         argumentos = {'classificationName': 'music', 'keyword': dic['artist'],
                       'apikey': 'HNYtWPE0DGcjUFwmi0FBPTpbrZ3p7znK'}
@@ -76,7 +80,6 @@ def search():
                 maxTemps[i] = "-ºC"
                 minTemps[i] = "-ºC"
         
-       
         map = folium.Map(
             location=[latitudes[0], longitudes[0]],
             zoom_start=5
@@ -89,10 +92,13 @@ def search():
                 popup= popup,
                 tooltip="" + nombres[i] + "  (" + str(i+1) + "/" + str(cuantos) +")" 
             ).add_to(map)
-        map.save('templates/maptest.html')
+
+        mapID = randint(1, 50000)
+        mapName = "map" + str(mapID) + '.html'
+        map.save('templates/' + mapName)
 
         return render_template('NameSearch.html', cuantos=range(cuantos), nombres=nombres, fotos=fotos, fechas=fechas, ciudades = ciudades, 
-                                horas=horas, links=links, latitudes=latitudes, longitudes=longitudes,
+                                horas=horas, links=links, latitudes=latitudes, longitudes=longitudes, mapName=mapName,
                                 icons=icons, weatherTexts=weatherTexts, maxTemps=maxTemps, minTemps=minTemps, jsCiudades = json.dumps(ciudades),
                                jsNombres=json.dumps(nombres), jsFotos=json.dumps(fotos), jsFechas=json.dumps(fechas), jsHoras=json.dumps(horas),
                                jsLinks=json.dumps(links), jsLatitudes=json.dumps(latitudes), jsLongitudes=json.dumps(longitudes), total=cuantos, jsTotal=json.dumps(cuantos),
